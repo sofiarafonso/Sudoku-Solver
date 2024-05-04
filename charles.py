@@ -61,10 +61,10 @@ class Individual:
     def get_values(self, list):
         """ for each value in a "list" (array that could be a row, a collumn or a box) 
         returns the possible values according to the ones that were already there """
-        values = range(1,10)
+        values = [i for i in range(1,10)]
         for i in list:
             if i != 0:
-                values.pop(i-1)
+                values.remove(i)
         return values
     
     def get_representation(self):
@@ -142,9 +142,7 @@ class Population:
     def __init__(self, size, optim, **kwargs):
         self.size = size
         self.individuals = []
-        self.sol_size = kwargs["sol_size"]
         self.sol_replacement = kwargs["replacement"]
-        self.valid_set = kwargs["valid_set"]
         self.initial_sudoku = kwargs["initial_sudoku"]
         self.optim = optim
         self.init_pop()
@@ -154,9 +152,7 @@ class Population:
         for _ in range(self.size):
             self.individuals.append(
                 Individual(
-                    size=self.sol_size,
                     replacement=self.sol_replacement,
-                    valid_set=self.valid_set,
                     initial_sudoku=self.initial_sudoku
                 )
             )
@@ -195,8 +191,8 @@ class Population:
                     least = sorted(new_pop, key=attrgetter("fitness"))[:1]
                 elif self.optim == "min":
                     least = sorted(new_pop, key=attrgetter("fitness"), reverse=True)[:1]
-                for i in range(1):
-                    new_pop.pop(new_pop.index(least[i]))
+                for j in range(1):
+                    new_pop.pop(new_pop.index(least[j]))
                     new_pop.append(elite)
 
             self.individuals = new_pop
@@ -210,7 +206,7 @@ class Population:
 
             print(f"Generation " + str(i + 1) + " out of " + str(gens))
 
-        return new_best_individual.fitness, new_best_individual.representation, new_best_individual.get_duplicates()
+        return new_best_individual
     
     def get_individuals(self):
         return self.individuals

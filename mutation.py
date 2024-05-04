@@ -2,7 +2,7 @@ from random import randint
 
 def swap_mutation_column(individual):
     """ Swaps two elements in the same column """
-    matrix = individual.representation
+    matrix = individual.set_representation()
     col = randint(0, 8)
     row1 = randint(0, 8)
     row2 = randint(0, 8)
@@ -13,7 +13,7 @@ def swap_mutation_column(individual):
 
 def swap_mutation_row(individual):
     """ Swaps two elements in the same row """
-    matrix = individual.representation
+    matrix = individual.get_representation()
     row = randint(0, 8)
     col1 = randint(0, 8)
     col2 = randint(0, 8)
@@ -24,7 +24,7 @@ def swap_mutation_row(individual):
 
 def swap_mutation_box(individual):
     """ Swaps two elements in the same box """
-    matrix = individual.representation
+    matrix = individual.get_representation()
     box = randint(0, 8)
     row1 = randint(0, 8)
     col1 = randint(0, 8)
@@ -39,7 +39,8 @@ def swap_mutation_box(individual):
 
 def insertion_mutation(individual):
     """ Inserts a random element in a random position """
-    matrix = individual.representation
+    print(type(individual))
+    matrix = individual.get_representation()
     row = randint(0, 8)
     col = randint(0, 8)
     element = randint(1, 9)
