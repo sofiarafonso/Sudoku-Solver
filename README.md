@@ -1,7 +1,7 @@
 ## CIFO Project - SUDOKU SOLVER using GAs
 
-# May, 2024 
-# Master in Data Science and Advanced Analytics
+### May, 2024 
+#### Master in Data Science and Advanced Analytics
 
 Developed by:
 
