@@ -36,10 +36,8 @@ def swap_mutation_box(individual):
     matrix[row1][col1], matrix[row2][col2] = matrix[row2][col2], matrix[row1][col1]
     return matrix
 
-
 def insertion_mutation(individual):
     """ Inserts a random element in a random position """
-    print(type(individual))
     matrix = individual.get_representation()
     row = randint(0, 8)
     col = randint(0, 8)
