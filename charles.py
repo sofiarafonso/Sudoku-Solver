@@ -9,8 +9,7 @@ class Individual:
             initial_sudoku,
             representation=None,
             size=81,
-            valid_set=range(0, 10),
-            replacement=True):
+            valid_set=range(0, 10)):
         self.initial_sudoku = initial_sudoku
 
         if representation is None:
@@ -24,8 +23,8 @@ class Individual:
 
         self.valid_set = valid_set
 
-    def set_representation(self, matrix):
-        self.representation = matrix
+    #def set_representation(self, matrix):
+        #self.representation = matrix
 
     def get_columns(self, matrix):
         """ returns a 9x9 matrix, 

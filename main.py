@@ -23,8 +23,8 @@ with open('/Users/sofiarafonso/Desktop/Computational Intelligence for Optimizati
                 for e in elitism:
                     fitnesses = []
                     for _ in range(15):
-                        pop = Population(size=200, optim="min", replacement=False, initial_sudoku=easy)
-                        ev = pop.evolve(gens=200, xo_prob=0.9, mut_prob=0.1, select=s, xo=c, mutate=m, elitism=e)
+                        pop = Population(size=500, optim="min", initial_sudoku=easy)
+                        ev = pop.evolve(gens=200, xo_prob=0.8, mut_prob=0.2, select=s, xo=c, mutate=m, elitism=e)
                         fitnesses.append(ev.get_fitness())
                         print(ev.print())
                         print(f'Fitness: {ev.get_fitness()}')

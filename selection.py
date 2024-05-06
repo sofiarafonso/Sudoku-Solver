@@ -1,7 +1,7 @@
 from random import sample, choices
 from operator import attrgetter
 
-def tournament_selection(population, tournament_size=5,):
+def tournament_selection(population, tournament_size=5):
     """ Perform tournament selection on the population """
     tournament = sample(population.individuals, tournament_size)
     if population.optim == "max":
