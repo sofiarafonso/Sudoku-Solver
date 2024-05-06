@@ -83,7 +83,7 @@ class Individual:
         return representation
     
     def count_duplicates(self, matrix):
-        """ counts the number of duplicates in each row in the sudoku"""
+        """ counts the number of duplicates in each "list" in the sudoku"""
         duplicates = 0
         for l in matrix:
             duplicates += 9 - len(set(l))
@@ -134,7 +134,7 @@ class Individual:
         self.representation[position] = value
 
     def __repr__(self):
-        return f"Individual(size={self.size}); Fitness: {self.fitness}"
+        return f"Fitness: {self.fitness}"
 
 ###############################
 

@@ -2,7 +2,7 @@ from random import randint
 
 def swap_mutation_column(individual):
     """ Swaps two elements in the same column """
-    matrix = individual.set_representation()
+    matrix = individual.get_representation()
     col = randint(0, 8)
     row1 = randint(0, 8)
     row2 = randint(0, 8)

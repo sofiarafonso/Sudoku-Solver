@@ -1,6 +1,7 @@
 *.pdf
 *.docx
 
+__pycache__/
 sudokus/
 .DS_Store
 .venvCIFO/
