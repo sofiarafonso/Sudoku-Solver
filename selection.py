@@ -17,7 +17,7 @@ def fitness_proportionate_selection(population):
     if population.optim == "max":
         return choices(population.individuals, weights=fitnesses)[0]
     elif population.optim == "min":
-        return choices(population.individuals, weights=[1/fit for fit in fitnesses])[0]
+        return choices(population.individuals, weights=[1/fit if fit != 0 else 0 for fit in fitnesses])[0]
     else:
         raise ValueError("Invalid fitness_optim value. Must be 'max' or 'min'.")
 
@@ -28,6 +28,6 @@ def ranking_selection(population):
     if population.optim == "max":
         return choices(sorted_pop, weights=ranks)[0]
     elif population.optim == "min":
-        return choices(sorted_pop, weights=[1/rank for rank in ranks])[0]
+        return choices(sorted_pop, weights=[1/rank if rank != 0 else 0 for rank in ranks])[0]
     else:
         raise ValueError("Invalid fitness_optim value. Must be 'max' or 'min'.")

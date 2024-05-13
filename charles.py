@@ -9,6 +9,7 @@ class Individual:
             initial_sudoku,
             representation=None,
             size=81,
+            replacement = False, 
             valid_set=range(0, 10)):
         self.initial_sudoku = initial_sudoku
 
@@ -21,18 +22,14 @@ class Individual:
 
         self.size = size
 
-        self.valid_set = valid_set
+        self.replacement = replacement
 
-    #def set_representation(self, matrix):
-        #self.representation = matrix
+        self.valid_set = valid_set
 
     def get_columns(self, matrix):
         """ returns a 9x9 matrix, 
         where each list is a column of the self.representation """
-        columns = [[0 for i in range(9)] for i in range(9)]
-        for i in range(9):
-            for j in range(9):
-                columns[i][j] = matrix[j][i]
+        columns = [[matrix[j][i] for j in range(9)] for i in range(9)]
         return columns
 
     def get_box(self, matrix):
@@ -66,6 +63,10 @@ class Individual:
                 values.remove(i)
         return values
     
+    def set_box(self, box_index, box):
+        """ Set the contents of a box at the given index """
+        self.representation[box_index * 9 : (box_index + 1) * 9] = box
+
     def get_representation(self):
         """ returns a 9x9 matrix, where each cell is filled with a value that is possible for that cell"""
         representation = [[0 for i in range(9)] for i in range(9)]   
@@ -83,21 +84,19 @@ class Individual:
     
     def count_duplicates(self, matrix):
         """ counts the number of duplicates in each "list" in the sudoku"""
-        duplicates = 0
-        for l in matrix:
-            duplicates += 9 - len(set(l))
+        duplicates = sum(9 - len(set(l)) for l in matrix)
         return duplicates
     
 
-    def get_initial_values(self):
-        """ counts the number of values that are different from the initial_sudoku """
-        count = 0
-        for i in range(9):
-            for j in range(9):
-                if self.initial_sudoku[i][j] != 0:
-                    if self.initial_sudoku[i][j] != self.representation[i][j]:
-                        count += 1
-        return count
+    # def get_initial_values(self):
+    #     """ counts the number of values that are different from the initial_sudoku """
+    #     count = 0
+    #     for i in range(9):
+    #         for j in range(9):
+    #             if self.initial_sudoku[i][j] != 0:
+    #                 if self.initial_sudoku[i][j] != self.representation[i][j]:
+    #                     count += 1
+    #     return count
     
     def get_fitness(self):
         """ returns the fitness of the individual """
@@ -109,16 +108,13 @@ class Individual:
         row_dups = self.count_duplicates(rows)
         column_dups = self.count_duplicates(columns)
         box_dups = self.count_duplicates(boxes)
-        fix_values = self.get_initial_values()
         if row_dups > 0:
             fitness += row_dups
         if column_dups > 0:
             fitness += column_dups  
         if box_dups > 0:
             fitness += box_dups
-        if fix_values > 0:
-            fitness += fix_values * 5
-        if row_dups == 0 and column_dups == 0 and box_dups == 0 and fix_values == 0:
+        if row_dups == 0 and column_dups == 0 and box_dups == 0:
             fitness = 0
         self.fitness = fitness
         return fitness
@@ -218,3 +214,4 @@ class Population:
 
     def __repr__(self):
        return f"Population(size={len(self.individuals)}, individual_size={len(self.individuals[0])})"
+    

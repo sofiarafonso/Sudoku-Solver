@@ -1,6 +1,6 @@
 from charles import Population, Individual
-from sudoku_data import easy #, medium, hard, expert
-from mutation import swap_mutation_box, swap_mutation_column, swap_mutation_row, insertion_mutation
+from sudoku_data import easy, medium, hard, expert
+from mutation import swap_mutation_column, swap_mutation_row, insertion_mutation
 from selection import tournament_selection, fitness_proportionate_selection, ranking_selection
 from crossover import single_point_crossover, two_point_crossover, uniform_crossover
 import csv
@@ -8,7 +8,7 @@ import csv
 
 
 
-mutation = [swap_mutation_box, swap_mutation_column, swap_mutation_row, insertion_mutation]
+mutation = [swap_mutation_column, swap_mutation_row, insertion_mutation]
 selection = [tournament_selection, fitness_proportionate_selection, ranking_selection]
 crossover = [single_point_crossover, two_point_crossover, uniform_crossover]
 elitism = [True, False]
@@ -22,8 +22,8 @@ with open('/Users/sofiarafonso/Desktop/Computational Intelligence for Optimizati
             for c in crossover:
                 for e in elitism:
                     fitnesses = []
-                    for _ in range(15):
-                        pop = Population(size=500, optim="min", initial_sudoku=easy)
+                    for _ in range(15): 
+                        pop = Population(size=500, optim="min", initial_sudoku=easy, replacement = False)
                         ev = pop.evolve(gens=200, xo_prob=0.8, mut_prob=0.2, select=s, xo=c, mutate=m, elitism=e)
                         fitnesses.append(ev.get_fitness())
                         print(ev.print())
@@ -32,4 +32,6 @@ with open('/Users/sofiarafonso/Desktop/Computational Intelligence for Optimizati
                     writer.writerow([m.__name__, s.__name__, c.__name__, e, fitnesses])
 
 
+#pop = Population(size=2, optim="min", initial_sudoku=easy)
+#ev = pop.evolve(gens=200, xo_prob=0.8, mut_prob=0.2, select=ranking_selection, xo=box_crossover, mutate=insertion_mutation, elitism=False)
 
