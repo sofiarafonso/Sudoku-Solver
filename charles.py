@@ -87,17 +87,6 @@ class Individual:
         duplicates = sum(9 - len(set(l)) for l in matrix)
         return duplicates
     
-
-    # def get_initial_values(self):
-    #     """ counts the number of values that are different from the initial_sudoku """
-    #     count = 0
-    #     for i in range(9):
-    #         for j in range(9):
-    #             if self.initial_sudoku[i][j] != 0:
-    #                 if self.initial_sudoku[i][j] != self.representation[i][j]:
-    #                     count += 1
-    #     return count
-    
     def get_fitness(self):
         """ returns the fitness of the individual """
         #sum of 1 per each number of duplicates in rows, collumns and boxes and 5 per each value different from the initial_sudoku
