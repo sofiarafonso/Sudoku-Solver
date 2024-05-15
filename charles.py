@@ -9,7 +9,6 @@ class Individual:
             initial_sudoku,
             representation=None,
             size=81,
-            replacement = False, 
             valid_set=range(0, 10)):
         self.initial_sudoku = initial_sudoku
 
@@ -21,8 +20,6 @@ class Individual:
         self.fitness = self.get_fitness()
 
         self.size = size
-
-        self.replacement = replacement
 
         self.valid_set = valid_set
 
@@ -126,7 +123,6 @@ class Population:
     def __init__(self, size, optim, **kwargs):
         self.size = size
         self.individuals = []
-        self.sol_replacement = kwargs["replacement"]
         self.initial_sudoku = kwargs["initial_sudoku"]
         self.optim = optim
         self.init_pop()
@@ -136,7 +132,6 @@ class Population:
         for _ in range(self.size):
             self.individuals.append(
                 Individual(
-                    replacement=self.sol_replacement,
                     initial_sudoku=self.initial_sudoku
                 )
             )

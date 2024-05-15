@@ -13,7 +13,7 @@ selection = [tournament_selection, fitness_proportionate_selection, ranking_sele
 crossover = [single_point_crossover, two_point_crossover, uniform_crossover]
 elitism = [True, False]
 
-with open('/Users/sofiarafonso/Desktop/Computational Intelligence for Optimization/Project/results.csv', 'w', newline='') as csvfile:
+with open('results.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['Mutation', 'Selection', 'Crossover', 'Elitism', 'Fitness'])
     
@@ -30,8 +30,4 @@ with open('/Users/sofiarafonso/Desktop/Computational Intelligence for Optimizati
                         print(f'Fitness: {ev.get_fitness()}')
                     
                     writer.writerow([m.__name__, s.__name__, c.__name__, e, fitnesses])
-
-
-#pop = Population(size=2, optim="min", initial_sudoku=easy)
-#ev = pop.evolve(gens=200, xo_prob=0.8, mut_prob=0.2, select=ranking_selection, xo=box_crossover, mutate=insertion_mutation, elitism=False)
 

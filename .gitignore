@@ -1,5 +1,6 @@
 *.pdf
 *.docx
+*.xlsx
 
 __pycache__/
 sudokus/
