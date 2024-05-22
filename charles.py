@@ -86,7 +86,7 @@ class Individual:
     
     def get_fitness(self):
         """ returns the fitness of the individual """
-        #sum of 1 per each number of duplicates in rows, collumns and boxes and 5 per each value different from the initial_sudoku
+        #sum of 1 per each number of duplicates in rows, columns and boxes a
         fitness = 0
         rows = self.representation
         columns = self.get_columns(self.representation)

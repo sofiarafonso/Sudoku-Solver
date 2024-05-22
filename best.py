@@ -27,21 +27,21 @@ mut_probs = [0.01, 0.02, 0.05, 0.1, 0.15, 0.2]
 
 
 # #Easy
-# pop = Population(size=1000, optim="min", initial_sudoku=hard)
-# ev = pop.evolve(gens=600, xo_prob=0.85, mut_prob=0.2, select=fitness_proportionate_selection, xo=uniform_crossover, mutate=insertion_mutation, elitism=True)
+# pop = Population(size=1000, optim="min", initial_sudoku=easy)
+# ev = pop.evolve(gens=400, xo_prob=0.85, mut_prob=0.2, select=fitness_proportionate_selection, xo=uniform_crossover, mutate=insertion_mutation, elitism=True)
 # a = ev.get_fitness()
 # print(ev.print())
 # print(f'Fitness: {ev.get_fitness()}')
 
 
 # #Medium 
-# pop = Population(size=1000, optim="min", initial_sudoku=medium, replacement = False)
-# ev = pop.evolve(gens=600, xo_prob=0.85, mut_prob=0.2, select=fitness_proportionate_selection, xo=uniform_crossover, mutate=insertion_mutation, elitism=True)
+# pop = Population(size=2000, optim="min", initial_sudoku=medium, replacement = False)
+# ev = pop.evolve(gens=400, xo_prob=0.85, mut_prob=0.2, select=fitness_proportionate_selection, xo=uniform_crossover, mutate=insertion_mutation, elitism=True)
 # print(ev.print())
 # print(f'Fitness: {ev.get_fitness()}')
 
 # #Hard
-# pop = Population(size=1000, optim="min", initial_sudoku=hard, replacement = False)
+# pop = Population(size=2000, optim="min", initial_sudoku=hard, replacement = False)
 # ev = pop.evolve(gens=600, xo_prob=0.85, mut_prob=0.2, select=fitness_proportionate_selection, xo=uniform_crossover, mutate=insertion_mutation, elitism=True)
 # print(ev.print())
 # print(f'Fitness: {ev.get_fitness()}')
