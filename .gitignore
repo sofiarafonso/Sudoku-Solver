@@ -1,8 +1,10 @@
-*.pdf
 *.docx
 *.xlsx
+*.rtf
 
 __pycache__/
 sudokus/
 .DS_Store
 .venvCIFO/
+2024_CIFO_Project_Guidelines.pdf
+paper_fixe.pdf
